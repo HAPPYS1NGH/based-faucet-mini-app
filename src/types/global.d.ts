@@ -4,7 +4,7 @@ declare global {
     interface Window {
         Telegram: TelegramWebApps.SDK;
     }
-    type network = "arbitrum-sepolia"
+    type network = "base-sepolia"
     export type Hex = `0x${string}`
 
 }
