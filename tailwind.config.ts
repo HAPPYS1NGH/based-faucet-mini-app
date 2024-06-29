@@ -11,11 +11,9 @@ const config = {
   prefix: "",
   theme: {
     colors: {
-      navy: "#213147",
-      "electric-blue": "#12AAff",
-      "sky-blue": "#9DCCED",
-      moon: "#E5E5E5",
+      blue: "#0052ff",
       white: "#FFFFFF",
+      black: "#000000",
       red: "#FF0000",
       orange: "#FFA500",
       green: "#008000",
