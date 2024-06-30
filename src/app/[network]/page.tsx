@@ -19,25 +19,25 @@ async function Page({ params }: { params: { network: network } }) {
     <main className="flex  flex-col items-center justify-between">
       <div className=" text-center flex flex-col items-center">
         <h1 className="text-4xl text-center font-bold mb-10">
-          BASE {network.substring(3).toUpperCase()}
+          BASE {network.substring(4).toUpperCase()}
         </h1>
         <div className="flex flex-col justify-around items-center  ">
-          <div className="flex  justify-around items-center  gap-10 mb-10">
-            <div className="p-4 rounded-xl bg-moon font-black text-navy ">
+          <div className="flex justify-around items-center  gap-10 mb-10">
+            <div className="p-4   w-40 rounded-xl bg-white font-black text-black ">
               <h4 className="text-xl">Block Num</h4>
               <p>{data.blockNumber}</p>
             </div>
-            <div className="p-4 rounded-xl bg-moon font-black text-navy ">
+            <div className="p-4  w-40 rounded-xl bg-white font-black text-black ">
               <h4 className="text-xl">Gas Fees</h4>
               <p>{data.gasPrice}</p>
             </div>
           </div>
-          <div className="flex  justify-around items-center  gap-10 mb-10">
-            <div className="p-4 rounded-xl bg-moon font-black text-navy ">
+          <div className="flex justify-around items-center  gap-10 mb-10">
+            <div className="p-4  w-40 rounded-xl bg-white font-black text-black ">
               <h4 className="text-xl">Funds Left</h4>
               <p>{data.balance}</p>
             </div>
-            <div className="p-4 rounded-xl bg-moon font-black text-navy ">
+            <div className="p-4  w-40 rounded-xl bg-white font-black text-black ">
               <h4 className="text-xl">Last Act.</h4>
               <p>{data.lastActive}</p>
             </div>
