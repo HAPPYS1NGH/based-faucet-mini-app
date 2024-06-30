@@ -7,6 +7,7 @@ import {
 } from "@rainbow-me/rainbowkit/wallets"
 import {
     baseSepolia,
+    base,
     localhost,
 } from "wagmi/chains"
 
@@ -30,6 +31,7 @@ export const config = getDefaultConfig({
         },
     ],
     chains: [
+        base,
         baseSepolia,
         localhost,
         ...(process.env.NEXT_PUBLIC_ENABLE_TESTNETS === "true"
