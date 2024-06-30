@@ -12,8 +12,8 @@ export async function GET() {
             baseProcessAddress(BASE_SEPOLIA)
         ]);
 
-        const gasPriceInGwei = parseFloat(rawGasPrice.toString()) / 1e9;
-        const formattedGasPrice = `${gasPriceInGwei.toFixed(2)} Gwei`;
+        const gasPrice = parseFloat(rawGasPrice.toString());
+        const formattedGasPrice = formatGasPrice(gasPrice);
 
         console.log("blockNumber", blockNumber.toString());
         console.log("gasPrice", formattedGasPrice);
@@ -111,4 +111,24 @@ const baseProcessAddress = async (
             address,
         };
     }
+};
+
+
+// Function to convert gas price and format it
+const formatGasPrice = (gasPrice: number): string => {
+    let gasPriceUnit: string;
+    let formattedGasPrice: string;
+
+    if (gasPrice > 1e9) {
+        gasPriceUnit = "Gwei";
+        formattedGasPrice = (gasPrice / 1e9).toFixed(2);
+    } else if (gasPrice >= 1e6) {
+        gasPriceUnit = "K Wei";
+        formattedGasPrice = (gasPrice / 1e6).toFixed(2);
+    } else {
+        gasPriceUnit = "M Wei";
+        formattedGasPrice = (gasPrice / 1e3).toFixed(2);
+    }
+
+    return `${formattedGasPrice} ${gasPriceUnit}`;
 };
