@@ -20,7 +20,7 @@ import { Button } from "../ui/button";
 import { Link2Icon } from "@radix-ui/react-icons";
 
 function Confirm2({ network }: { network: string }) {
-  const networkName = "arbitrum-sepolia";
+  const networkName = "base-sepolia";
   const mainBtn = useMainButton();
   const utils = useUtils();
 
@@ -47,7 +47,7 @@ function Confirm2({ network }: { network: string }) {
   const handleClick = () => {
     mainBtn.enable();
     mainBtn.setParams({
-      bgColor: "#12AAdf",
+      bgColor: "#0052ff",
       text: "Get Testnet Tokens",
       isVisible: true,
     });
@@ -60,14 +60,14 @@ function Confirm2({ network }: { network: string }) {
       console.log("Faucet Requested");
 
       mainBtn.showLoader();
-      mainBtn.setBgColor("#72AAdf");
+      mainBtn.setBgColor("#0051ffe0");
       mainBtn.disable();
 
       console.log("Username", username);
       if (!username) {
         setError("Username is required");
         mainBtn.hideLoader();
-        mainBtn.setBgColor("#12AAdf");
+        mainBtn.setBgColor("#0052ff");
         mainBtn.enable();
         return;
       }
@@ -76,7 +76,7 @@ function Confirm2({ network }: { network: string }) {
       if (!addRef.current) {
         setError("Address is required");
         mainBtn.hideLoader();
-        mainBtn.setBgColor("#12AAdf");
+        mainBtn.setBgColor("#0052ff");
         mainBtn.enable();
         return;
       }
@@ -84,7 +84,7 @@ function Confirm2({ network }: { network: string }) {
       if (addRef.current.length !== 42) {
         setError("Invalid Address");
         mainBtn.hideLoader();
-        mainBtn.setBgColor("#12AAdf");
+        mainBtn.setBgColor("#0052ff");
         mainBtn.enable();
         return;
       }
@@ -100,7 +100,7 @@ function Confirm2({ network }: { network: string }) {
         if (checkResult !== true) {
           setError(checkResult);
           mainBtn.hideLoader();
-          mainBtn.setBgColor("#12AAdf");
+          mainBtn.setBgColor("#0052ff");
           mainBtn.enable();
           return;
         }
@@ -114,7 +114,7 @@ function Confirm2({ network }: { network: string }) {
         if (hash.substring(0, 2) !== "0x") {
           setError(hash);
           mainBtn.hideLoader();
-          mainBtn.setBgColor("#12AAdf");
+          mainBtn.setBgColor("#0052ff");
           mainBtn.enable();
           return;
         }
@@ -124,7 +124,7 @@ function Confirm2({ network }: { network: string }) {
         console.error("Error in dripTokensToAddress", error);
         setError(error?.metaMessages[0]);
       }
-      mainBtn.setBgColor("#12AAdf");
+      mainBtn.setBgColor("#0052ff");
       mainBtn.hideLoader();
       mainBtn.enable();
     };
@@ -147,11 +147,11 @@ function Confirm2({ network }: { network: string }) {
       <Drawer onClose={handleClose}>
         <DrawerTrigger
           onClick={handleClick}
-          className="hover:bg-[#12AAdf] text-black bg-electric-blue w-full rounded-xl px-8 py-4 "
+          className=" text-white bg-blue hover:bg-[#0051ffe0] active:bg-[#0051ffbd] w-full rounded-xl px-8 py-4 "
         >
           Get the faucet Now
         </DrawerTrigger>
-        <DrawerContent className="bg-sky-blue text-navy">
+        <DrawerContent className="bg-white text-black">
           <DrawerHeader>
             <DrawerTitle className="text-3xl p-2 text-left">
               Request some faucet
@@ -163,11 +163,11 @@ function Confirm2({ network }: { network: string }) {
               <div className="text-black tracking-tighter flex flex-col gap-2 text-sm">
                 <p>Faucet Drips every 24 hours</p>
                 <p>
-                  Wallets with more than 0.01 Eth on Mainnet/ Arbitrum One will
-                  be dripped 0.2 ETH
+                  Wallets with more than 0.01 Eth on ETH/ Base Mainnet will be
+                  dripped 0.2 ETH
                 </p>
                 <p>
-                  Wallets with less than 0.01 Eth on Mainnet/ Arbitrum One will
+                  Wallets with less than 0.01 Eth on ETH/ Base Mainnet One will
                   be dripped 0.1 ETH
                 </p>
               </div>
@@ -190,9 +190,9 @@ function Confirm2({ network }: { network: string }) {
                 variant={"view"}
                 size={"view"}
                 onClick={() => {
-                  utils.openLink(`https://sepolia.arbiscan.io/tx/${success}`);
+                  utils.openLink(`https://sepolia.basescan.org/tx/${success}`);
                 }}
-                className=" text-moon text-sm flex gap-2 mt-2"
+                className=" text-white text-sm flex gap-2 mt-2"
               >
                 View Transaction
                 <Link2Icon />
