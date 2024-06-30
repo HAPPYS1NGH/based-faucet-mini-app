@@ -1,5 +1,4 @@
 import React from "react";
-import Confirm from "@/components/faucet/Confirm";
 import Confirm2 from "@/components/faucet/Confirm2";
 
 async function fetcher(url: string) {
