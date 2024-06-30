@@ -13,7 +13,9 @@ export default async function Home() {
   return (
     <main className="flex  flex-col items-center justify-between">
       <div className=" text-center flex flex-col items-center">
-        <h1 className="text-4xl text-center font-bold">Based Faucet Dripper</h1>
+        <h1 className="text-4xl text-center font-bold mx-10">
+          Based Faucet Dripper
+        </h1>
         <div className="p-10 mt-10 ">
           <NetworkCard name="baseSepolia" />
         </div>
