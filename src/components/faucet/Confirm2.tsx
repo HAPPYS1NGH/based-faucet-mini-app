@@ -15,7 +15,11 @@ import {
   DrawerTrigger,
 } from "@/components/ui/drawer";
 
-import { canDripTokens, dripTokensToAddress } from "@/helpers/contract";
+import {
+  canDripTokens,
+  dripTokensToAddress,
+  isNewAccount,
+} from "@/helpers/contract";
 import { Button } from "../ui/button";
 import { Link2Icon } from "@radix-ui/react-icons";
 
@@ -104,11 +108,15 @@ function Confirm2({ network }: { network: string }) {
           mainBtn.enable();
           return;
         }
+        let fundsToSend = "10000000000000000";
+        if (!(await isNewAccount(addRef.current as `0x${string}`))) {
+          fundsToSend = "20000000000000000";
+        }
 
         const hash = await dripTokensToAddress(
           addRef.current as `0x${string}`,
           username,
-          10000000000000000n,
+          BigInt(fundsToSend),
           networkName
         );
         if (hash.substring(0, 2) !== "0x") {
@@ -162,13 +170,10 @@ function Confirm2({ network }: { network: string }) {
               <h4 className="text-lg mb-3">Guidelines</h4>
               <div className="text-black tracking-tighter flex flex-col gap-2 text-sm">
                 <p>Faucet Drips every 24 hours</p>
+                <p>You can claim 0.01 Eth every 24 hours.</p>
                 <p>
-                  Wallets with more than 0.01 Eth on ETH/ Base Mainnet will be
-                  dripped 0.2 ETH
-                </p>
-                <p>
-                  Wallets with less than 0.01 Eth on ETH/ Base Mainnet One will
-                  be dripped 0.1 ETH
+                  Wallets with {`>`} 20 Build Score can claim 0.02 Eth every 24
+                  hours.
                 </p>
               </div>
             </div>

@@ -138,3 +138,22 @@ export const canDripTokens = async (
         return "An unknown error occurred.";
     }
 };
+
+
+
+// Function to return true if user Build Score less than 20
+export async function isNewAccount(address: string) {
+    try {
+        const response = await fetch(`https://api.talentprotocol.com/api/v2/passports/${address.toLowerCase()}`, {
+            method: 'GET',
+            headers: {},
+        });
+        const data = await response.json();
+        return (
+            data?.passport?.buildScore < 20
+        );
+    } catch (error) {
+        console.error("Error in isNewAccount", error);
+        return false;
+    }
+}
